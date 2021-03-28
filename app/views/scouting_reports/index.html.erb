@@ -1,25 +1,33 @@
-<p id="notice"><%= notice %></p>
+<h3 class="mb-sm-5 mb-4 mb-md-0 mb-lg-5">All Reports</h3>
 
-<h1>Scouting Reports</h1>
+<div class="table-responsive">
+  <table class="clickable-table table table-striped table-hover table-sm" id="reports-table">
+    <thead>
+      <th>Player</th>
+      <th>Age</th>
+      <th>Team</th>
+      <th>Author</th>
+      <th>Grade</th>
+      <th>Report Type</th>
+      <th>Last Modified</th>
+    </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <tbody>
+      <% @scouting_reports.each do |scouting_report| %>
 
-  <tbody>
-    <% @scouting_reports.each do |scouting_report| %>
-      <tr>
-        <td><%= link_to 'Show', scouting_report %></td>
-        <td><%= link_to 'Edit', edit_scouting_report_path(scouting_report) %></td>
-        <td><%= link_to 'Destroy', scouting_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tr>
+          <td><%= full_name(scouting_report.player) %></td>
+          <td><%= age(scouting_report.player.info['dob']) %></td>
+          <td>TB</td>
+          <td>User 1</td>
+          <td><%= scouting_report.grade %></td>
+          <td><%= report_type(scouting_report.report_type) %></td>
+          <td><%= date_str(scouting_report.updated_at) %></td>
 
-<br>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%= link_to 'New Scouting Report', new_scouting_report_path %>
+<%= link_to 'New Scouting Report', new_scouting_report_path, :class => "btn btn-primary" %>
