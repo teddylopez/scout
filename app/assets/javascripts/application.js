@@ -18,6 +18,7 @@
 
 $(document).ready(function () {
   initInputGroups();
+  clickableRows();
 });
 
 function initInputGroups() {
@@ -40,6 +41,16 @@ function initInputGroups() {
       if (!$this.val()) {
         $container.removeClass("toggle-group-selected");
       }
+    });
+  });
+}
+
+function clickableRows() {
+  const $rows = $("table.clickable-table tr[data-href]");
+  $.each($rows, (index, object) => {
+    $(object).on("click", () => {
+      const $this = $(object);
+      window.location.href = $this[0].dataset.href;
     });
   });
 }

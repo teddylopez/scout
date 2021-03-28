@@ -20,8 +20,7 @@
 
     <tbody>
       <% @scouting_reports.each do |scouting_report| %>
-
-        <tr>
+        <tr data-href="<%= scouting_report_path(scouting_report.id) %>">
           <td><%= full_name(scouting_report.player) %></td>
           <td><%= age(scouting_report.player.info['dob']) %></td>
           <td>TB</td>
@@ -31,7 +30,6 @@
           </td>
           <td><%= report_type(scouting_report.report_type) %></td>
           <td><%= date_str(scouting_report.updated_at) %></td>
-
         </tr>
       <% end %>
     </tbody>
