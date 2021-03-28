@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-  <% if should_show_pitcher_info? %>
-    <%= render "scouting_reports/pitcher/report", scouting_report: @scouting_report %>
-  <% elsif should_show_position_info? %>
-    <%= render "scouting_reports/position/report", scouting_report: @scouting_report %>
-  <% end %>
+<% if should_show_pitcher_info? %>
+  <%= render "scouting_reports/pitcher/report", scouting_report: @scouting_report %>
+<% elsif should_show_position_info? %>
+  <%= render "scouting_reports/position/report", scouting_report: @scouting_report %>
+<% end %>
 
 <div class="link-container mt-sm-5 mt-sm-5 mt-4 mt-md-0 mt-lg-5 mb-sm-5 mb-sm-5 mb-4 mb-md-0 mb-lg-5">
   <%= link_to 'Back', root_path, {report_type: "all", class: "btn btn-outline-primary"} %>
@@ -12,5 +12,4 @@
     <%= link_to 'Edit', edit_scouting_report_path(@scouting_report), {class: "btn btn-primary"} %>
     <%= link_to 'Delete', @scouting_report, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' } %>
   <% end %>
-
 </div>
