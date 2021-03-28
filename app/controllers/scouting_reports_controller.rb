@@ -1,8 +1,9 @@
 class ScoutingReportsController < ApplicationController
   before_action :set_scouting_report, only: %i[ show edit update destroy ]
+  helper_method :sort_column, :sort_direction
 
   def index
-    @scouting_reports = ScoutingReport.all
+    @scouting_reports = ScoutingReport.order(sort_column + " " + sort_direction)
   end
 
   def show
@@ -51,5 +52,13 @@ class ScoutingReportsController < ApplicationController
 
     def scouting_report_params
       params.require(:scouting_report).permit(:player_id, :report_type, :grade, :status, :pitcher_role, :summary, :position, :time_to_first, :fastball_min_velo, :fastball_max_velo, :sinker_min_velo, :sinker_max_velo, :slider_min_velo, :slider_max_velo, :curveball_min_velo, :curveball_max_velo, :changeup_min_velo, :changeup_max_velo, :other_name, :other_min_velo, :other_max_velo)
+    end
+
+    def sort_column
+      %w[updated_at, grade].include?(params[:sort]) ? params[:sort] : 'updated_at'
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
     end
 end
