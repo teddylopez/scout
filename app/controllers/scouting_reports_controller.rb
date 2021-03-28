@@ -79,7 +79,7 @@ class ScoutingReportsController < ApplicationController
     end
 
     def sort_column
-      %w[updated_at, grade].include?(params[:sort]) ? params[:sort] : 'updated_at'
+      %w[updated_at grade].include?(params[:sort]) ? params[:sort] : 'updated_at'
     end
 
     def sort_direction
