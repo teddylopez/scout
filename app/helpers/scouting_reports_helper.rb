@@ -40,4 +40,12 @@ module ScoutingReportsHelper
     scouting_report_type == 1
   end
 
+  def kind_of_report(report)
+    return "#{report_type(report.report_type)} Report for #{report.player.first_name} #{report.player.last_name}"
+  end
+
+  def current_users_report?(current_user, report)
+    report.user_id == current_user.id
+  end
+
 end

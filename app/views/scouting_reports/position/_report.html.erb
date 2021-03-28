@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h4><%= kind_of_report(@scouting_report) %></h4> <br>
+  <h6><b>Author</b>: <%= @scouting_report.user.email %></h6>
+</div>
+<div class="row show-report">
+  <div class="col-md-4 col-sm-12">
+    <h6><b>Position</b>: <%= @scouting_report.position %></h6>
+    <br>
+    <h6><b>Grade</b>: <%= @scouting_report.grade %></h6>
+    <br>
+    <h6><b>Running Time to 1st Base</b>: <%= @scouting_report.time_to_first %> (s)</h6>
+    <br>
+    <u><b>Additional Info</b></u>
+    <%= render "scouting_reports/shared/player_attributes", info: @scouting_report.player.info %>
+  </div>
+  <div class="col-md-6 border-left col-sm-12">
+    <p><b>Summary</b>: <%= @scouting_report.summary %></p>
+  </div>
+</div>

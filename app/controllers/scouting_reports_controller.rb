@@ -6,8 +6,9 @@ class ScoutingReportsController < ApplicationController
   helper_method :scouting_report_type
 
   def index
-    initial_query = ScoutingReport.joins(:player).order(sort_column + " " + sort_direction)
-
+    initial_query = ScoutingReport.joins(:player)
+                                  .order(sort_column + " " + sort_direction)
+                                  .paginate(page: params[:page], per_page: STANDARD_PAGINATION_AMOUNT)
     if filter_pitch_reports?
       @scouting_reports = initial_query.pitcher_reports
     elsif filter_position_reports?

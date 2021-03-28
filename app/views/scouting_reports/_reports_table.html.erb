@@ -1,0 +1,33 @@
+<div class="table-responsive">
+  <table class="clickable-table table table-striped table-hover table-sm" id="reports-table">
+    <thead>
+      <th>Player</th>
+      <th>Age</th>
+      <th>Team</th>
+      <th>Author</th>
+      <th><%= sortable("grade") %></th>
+      <th>Report Type</th>
+      <th><%= sortable("updated_at", "Last Modified") %></th>
+    </thead>
+
+    <tbody>
+      <% scouting_reports.each do |scouting_report| %>
+
+        <tr data-href="<%= scouting_report_path(scouting_report.id) %>">
+          <td><%= full_name(scouting_report.player) %></td>
+          <td><%= age(scouting_report.player.info['dob']) %></td>
+          <td>TB</td>
+          <td><%= scouting_report.user.email %></td>
+
+          <td>
+            <span class="<%= color_code_grade(scouting_report.grade) %>"><%= scouting_report.grade %></span>
+          </td>
+
+          <td><%= report_type(scouting_report.report_type) %></td>
+          <td><%= date_str(scouting_report.updated_at) %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

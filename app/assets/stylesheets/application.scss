@@ -114,3 +114,46 @@ div.card {
 .toggle-group-selected {
   background-color: #b3e5fc;
 }
+
+div.page-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px 0 12px 0;
+  border-bottom: 1px solid gray;
+}
+
+div.show-report {
+  margin-top: 20px;
+}
+
+.border-left {
+  border-left: 1px solid gray;
+}
+
+ul.pagination {
+  line-height: 12px !important;
+}
+
+@media only screen and (max-width: 1000px) {
+  .form-group {
+    margin: 5px 0;
+    padding: 5px 0;
+  }
+  div.flex-container {
+    display: inline-block;
+  }
+
+  div.card {
+    width: 100%;
+  }
+
+  div.form-row {
+    margin: 0;
+  }
+
+  div.page-header {
+    display: inline-block;
+  }
+}

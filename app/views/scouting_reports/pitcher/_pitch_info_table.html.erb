@@ -1,0 +1,58 @@
+<table class="table table-sm" id="reports-table">
+  <thead>
+    <th>Pitch</th>
+    <th>Min Velo</th>
+    <th>Max Velo</th>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <% if scouting_report.fastball_min_velo.present? %>
+        <td>Fastball</td>
+        <td><%= scouting_report.fastball_min_velo %></td>
+        <td><%= scouting_report.fastball_max_velo %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <% if scouting_report.sinker_min_velo.present? %>
+        <td>Sinker</td>
+        <td><%= scouting_report.sinker_min_velo %></td>
+        <td><%= scouting_report.sinker_max_velo %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <% if scouting_report.slider_min_velo.present? %>
+        <td>Slider</td>
+        <td><%= scouting_report.slider_min_velo %></td>
+        <td><%= scouting_report.slider_max_velo %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <% if scouting_report.curveball_min_velo.present? %>
+        <td>Curveball</td>
+        <td><%= scouting_report.curveball_min_velo %></td>
+        <td><%= scouting_report.curveball_max_velo %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <% if scouting_report.changeup_min_velo.present? %>
+        <td>Changeup</td>
+        <td><%= scouting_report.changeup_min_velo %></td>
+        <td><%= scouting_report.changeup_max_velo %></td>
+      <% end %>
+    </tr>
+
+    <tr>
+      <% if scouting_report.other_min_velo.present? %>
+        <td><%= scouting_report.other_name.capitalize %></td>
+        <td><%= scouting_report.other_min_velo %></td>
+        <td><%= scouting_report.other_max_velo %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
