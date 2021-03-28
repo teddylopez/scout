@@ -19,4 +19,17 @@ module ScoutingReportsHelper
     return string.strftime("%m/%d/%y")
   end
 
+  def color_code_grade(grade)
+    return if grade.nil?
+
+    case grade
+      when 70..80
+        "btn-sm btn-danger"
+      when 50..60
+        "btn-sm btn-warning"
+      when 20..40
+        "btn-sm btn-success"
+    end
+  end
+
 end

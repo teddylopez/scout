@@ -20,7 +20,9 @@
           <td><%= age(scouting_report.player.info['dob']) %></td>
           <td>TB</td>
           <td>User 1</td>
-          <td><%= scouting_report.grade %></td>
+          <td>
+            <span class="<%= color_code_grade(scouting_report.grade) %>"><%= scouting_report.grade %></span>
+          </td>
           <td><%= report_type(scouting_report.report_type) %></td>
           <td><%= date_str(scouting_report.updated_at) %></td>
 
