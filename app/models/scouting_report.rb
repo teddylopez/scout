@@ -1,5 +1,6 @@
 class ScoutingReport < ApplicationRecord
   belongs_to :player
+  belongs_to :user
 
   validates :player, presence: true
   validates :position, presence: true, if: :is_position_report?

@@ -24,6 +24,12 @@ a {
   text-decoration: none;
 }
 
+nav {
+  .navbar-nav {
+    align-items: baseline;
+  }
+}
+
 form {
   textarea {
     height: 150px;

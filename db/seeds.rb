@@ -1,3 +1,13 @@
+User.create!({
+  email: "scout@raysbaseball.com",
+  password: "password"
+})
+
+User.create!({
+  email: "otherscout@raysbaseball.com",
+  password: "password"
+})
+
 Player.create!({
   id: 1,
   first_name: "Tyler",
@@ -74,6 +84,7 @@ Player.create!({
 })
 
 ScoutingReport.create!({
+  user_id: 1,
   player_id: 1,
   report_type: 0,
   grade: 70,
@@ -97,6 +108,7 @@ ScoutingReport.create!({
 })
 
 ScoutingReport.create!({
+  user_id: 2,
   player_id: 4,
   report_type: 1,
   grade: 50,
@@ -109,6 +121,7 @@ ScoutingReport.create!({
 })
 
 ScoutingReport.create!({
+  user_id: 1,
   player_id: 2,
   report_type: 1,
   grade: 40,
@@ -121,6 +134,7 @@ ScoutingReport.create!({
 })
 
 ScoutingReport.create!({
+  user_id: 2,
   player_id: 2,
   report_type: 1,
   grade: 50,
@@ -133,6 +147,7 @@ ScoutingReport.create!({
 })
 
 ScoutingReport.create!({
+  user_id: 2,
   player_id: 4,
   report_type: 1,
   grade: 50,
@@ -145,6 +160,7 @@ ScoutingReport.create!({
 })
 
 ScoutingReport.create!({
+  user_id: 1,
   player_id: 3,
   report_type: 1,
   grade: 50,
@@ -157,6 +173,7 @@ ScoutingReport.create!({
 })
 
 ScoutingReport.create!({
+  user_id: 1,
   player_id: 5,
   report_type: 0,
   grade: 60,

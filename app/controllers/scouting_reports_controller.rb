@@ -1,4 +1,6 @@
 class ScoutingReportsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_user
   before_action :set_scouting_report, only: %i[ show edit update destroy ]
   helper_method :sort_column, :sort_direction
   helper_method :scouting_report_type
@@ -19,14 +21,17 @@ class ScoutingReportsController < ApplicationController
   end
 
   def new
-    @scouting_report = ScoutingReport.new
+    @scouting_report = @user.scouting_reports.build
   end
 
   def edit
+    unless @scouting_report.user_id == @user.id
+      redirect_to @scouting_report, notice: "You are not authorized to view that page."
+    end
   end
 
   def create
-    @scouting_report = ScoutingReport.new(scouting_report_params)
+    @scouting_report = @user.scouting_reports.build(scouting_report_params)
 
     respond_to do |format|
       if @scouting_report.save
@@ -55,12 +60,17 @@ class ScoutingReportsController < ApplicationController
   end
 
   private
+
     def set_scouting_report
       @scouting_report = ScoutingReport.find(params[:id])
     end
 
+    def set_user
+      @user = current_user
+    end
+
     def scouting_report_params
-      params.require(:scouting_report).permit(:player_id, :report_type, :grade, :status, :pitcher_role, :summary, :position, :time_to_first, :fastball_min_velo, :fastball_max_velo, :sinker_min_velo, :sinker_max_velo, :slider_min_velo, :slider_max_velo, :curveball_min_velo, :curveball_max_velo, :changeup_min_velo, :changeup_max_velo, :other_name, :other_min_velo, :other_max_velo)
+      params.require(:scouting_report).permit(:player_id, :user_id, :report_type, :grade, :status, :pitcher_role, :summary, :position, :time_to_first, :fastball_min_velo, :fastball_max_velo, :sinker_min_velo, :sinker_max_velo, :slider_min_velo, :slider_max_velo, :curveball_min_velo, :curveball_max_velo, :changeup_min_velo, :changeup_max_velo, :other_name, :other_min_velo, :other_max_velo)
     end
 
     def sort_column
