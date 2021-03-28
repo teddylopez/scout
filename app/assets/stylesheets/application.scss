@@ -92,11 +92,12 @@ div.flex-container {
 
 div.pitch-flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 div.card {
+  background-color: #f5f2f0;
   width: 33%;
 
   div.card-body {
@@ -112,7 +113,7 @@ div.card {
 }
 
 .toggle-group-selected {
-  background-color: #b3e5fc;
+  background-color: #b3e5fc !important;
 }
 
 div.page-header {
@@ -122,6 +123,17 @@ div.page-header {
   justify-content: space-between;
   padding: 10px 0 12px 0;
   border-bottom: 1px solid gray;
+}
+
+div.page-block {
+  position: relative;
+  background-color: white;
+  border-radius: 3px;
+  padding: 0.625rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+  border-image: initial;
 }
 
 div.show-report {

@@ -10,5 +10,7 @@
   <%= link_to 'Back', root_path, {report_type: "all", class: "btn btn-outline-primary"} %>
   <% if current_users_report?(@user, @scouting_report) %>
     <%= link_to 'Edit', edit_scouting_report_path(@scouting_report), {class: "btn btn-primary"} %>
+    <%= link_to 'Delete', @scouting_report, method: :delete, class: "btn btn-outline-danger", data: { confirm: 'Are you sure?' } %>
   <% end %>
+
 </div>

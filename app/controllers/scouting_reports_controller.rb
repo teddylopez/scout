@@ -54,9 +54,13 @@ class ScoutingReportsController < ApplicationController
   end
 
   def destroy
-    @scouting_report.destroy
-    respond_to do |format|
-      format.html { redirect_to scouting_reports_url, notice: "Scouting report was successfully destroyed." }
+    if @scouting_report.user_id == @user.id
+      @scouting_report.destroy
+      respond_to do |format|
+        format.html { redirect_to scouting_reports_url, notice: "Scouting report was successfully destroyed." }
+      end
+    else
+      redirect_to @scouting_report, notice: "You are not authorized."
     end
   end
 

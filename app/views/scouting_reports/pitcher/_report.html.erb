@@ -1,8 +1,6 @@
-<div class="page-header">
-  <h4><%= kind_of_report(@scouting_report) %></h4> <br>
-  <h6><b>Author</b>: <%= @scouting_report.user.email %></h6>
-</div>
-<div class="row show-report">
+<%= render "scouting_reports/shared/report_header", scouting_report: @scouting_report %>
+
+<div class="row show-report page-block">
   <div class="col-md-4 col-sm-12">
     <h6><b>Role</b>: <%= @scouting_report.pitcher_role.capitalize %></h6>
     <br>
