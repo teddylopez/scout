@@ -16,8 +16,36 @@
 
 @import "bootstrap";
 
+body {
+  background-color: #f5f2f0 !important;
+}
+
 a {
   text-decoration: none;
+}
+
+form {
+  textarea {
+    height: 150px;
+  }
+
+  .form-dropdown {
+    display: flex;
+  }
+
+  div.form-row {
+    margin-bottom: 3%;
+  }
+}
+
+select {
+  cursor: pointer;
+  padding: 3px;
+  height: 30px;
+}
+
+label {
+  padding-right: 10px;
 }
 
 table#reports-table {
@@ -47,4 +75,36 @@ table#reports-table {
 div.form-container {
   width: 100%;
   margin-top: 5%;
+}
+
+div.flex-container {
+  margin: 2% 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+div.pitch-flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.card {
+  width: 33%;
+
+  div.card-body {
+    padding: 0.5rem;
+  }
+  input {
+    font-size: 14px;
+    border: 1px solid #cfd8dc;
+    border-radius: 3px;
+    width: 90px;
+    cursor: pointer;
+  }
+}
+
+.toggle-group-selected {
+  background-color: #b3e5fc;
 }

@@ -15,3 +15,31 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+$(document).ready(function () {
+  initInputGroups();
+});
+
+function initInputGroups() {
+  const $groupedBtns = $("input.grouped-inputs");
+
+  $.each($groupedBtns, (index, button) => {
+    const $this = $(button);
+    const $key = $this[0].dataset.key;
+    const $container = $("div.card[data-container='" + $key + "']");
+
+    if ($this.val()) {
+      $container.addClass("toggle-group-selected");
+    }
+
+    $this.on("focus", () => {
+      $container.addClass("toggle-group-selected");
+    });
+
+    $this.focusout(() => {
+      if (!$this.val()) {
+        $container.removeClass("toggle-group-selected");
+      }
+    });
+  });
+}
