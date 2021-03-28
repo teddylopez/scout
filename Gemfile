@@ -11,7 +11,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'jquery-rails'
-gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
