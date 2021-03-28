@@ -7,4 +7,8 @@ module ApplicationHelper
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
 
+  def active_class(params, match, val)
+    params[match] == val ? "btn btn-primary active" : "btn btn-outline-primary"
+  end
+
 end

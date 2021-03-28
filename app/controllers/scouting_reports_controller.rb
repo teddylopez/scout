@@ -1,9 +1,18 @@
 class ScoutingReportsController < ApplicationController
   before_action :set_scouting_report, only: %i[ show edit update destroy ]
   helper_method :sort_column, :sort_direction
+  helper_method :scouting_report_type
 
   def index
-    @scouting_reports = ScoutingReport.order(sort_column + " " + sort_direction)
+    initial_query = ScoutingReport.joins(:player).order(sort_column + " " + sort_direction)
+
+    if filter_pitch_reports?
+      @scouting_reports = initial_query.pitcher_reports
+    elsif filter_position_reports?
+      @scouting_reports = initial_query.position_reports
+    else
+      @scouting_reports = initial_query
+    end
   end
 
   def show
@@ -23,7 +32,7 @@ class ScoutingReportsController < ApplicationController
       if @scouting_report.save
         format.html { redirect_to @scouting_report, notice: "Scouting report was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
@@ -60,5 +69,23 @@ class ScoutingReportsController < ApplicationController
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
+    end
+
+    def scouting_report_type
+      if params[:report_type]
+        return params[:report_type] == 'all' ? 'all' : params[:report_type].to_i
+      elsif @scouting_report and @scouting_report.report_type
+        return @scouting_report.report_type
+      else
+        return 'all'
+      end
+    end
+
+    def filter_pitch_reports?
+      scouting_report_type == 0
+    end
+
+    def filter_position_reports?
+      scouting_report_type == 1
     end
 end

@@ -1,0 +1,36 @@
+<div class="position-report mt-sm-5">
+  <h4 class="mt-sm-5 mt-4 mt-md-0 mt-lg-5">Position Player Report</h4>
+
+  <div class="flex-container mb-sm-3">
+    <div class="form-group form-dropdown">
+      <%= form.label "player" %>
+      <%= form.select :player_id, Player.all.collect { |p| [ p.last_name, p.id ] }, :include_blank => true %>
+    </div>
+
+    <div class="form-group form-dropdown">
+      <%= form.label "position" %>
+      <%= form.select :position, options_for_select(POSITION_PLAYER_POSITIONS) %>
+    </div>
+
+    <div class="form-group form-dropdown">
+      <%= form.label "grade" %>
+      <%= form.select :grade, options_for_select(STANDARD_GRADES, 50)%>
+    </div>
+
+    <div class="form-group form-dropdown">
+      <%= form.label "Time to 1st base" %>
+      <%= form.text_field :time_to_first, placeholder: "Time in seconds..." %>
+    </div>
+  </div>
+
+  <div class="form-group mb-sm-5">
+    <%= form.label "summary" %>
+    <%= form.text_area :summary, class: "form-control", placeholder: "Written report..." %>
+  </div>
+
+  <%= form.hidden_field :report_type, value: scouting_report_type %>
+
+  <div class="actions mt-sm-5 mt-sm-5 mt-4 mt-md-0 mt-lg-5">
+    <%= form.submit "Save Report", :class => 'btn-sm btn-primary' %>
+  </div>
+</div>

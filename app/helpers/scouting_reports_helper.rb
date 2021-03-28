@@ -32,4 +32,12 @@ module ScoutingReportsHelper
     end
   end
 
+  def should_show_pitcher_info?
+    scouting_report_type == 0
+  end
+
+  def should_show_position_info?
+    scouting_report_type == 1
+  end
+
 end

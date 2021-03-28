@@ -1,0 +1,5 @@
+<% if should_show_pitcher_info? %>
+  <%= render "scouting_reports/form_partials/pitcher_fields", form: form, scouting_report: scouting_report %>
+<% elsif should_show_position_info? %>
+  <%= render "scouting_reports/form_partials/position_fields", form: form, scouting_report: scouting_report %>
+<% end %>

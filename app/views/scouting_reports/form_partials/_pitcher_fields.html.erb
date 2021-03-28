@@ -1,0 +1,152 @@
+<div class="pitcher-report mt-sm-5 mt-sm-5">
+  <h4 class="mt-sm-5 mt-4 mt-md-0 mt-lg-5">Pitcher Report</h4>
+
+  <div class="flex-container mb-sm-3">
+    <div class="form-group form-dropdown">
+      <%= form.label "player" %>
+      <%= form.select :player_id, Player.all.collect { |p| [ p.last_name, p.id ] }, :include_blank => true %>
+    </div>
+
+    <div class="form-group form-dropdown">
+      <%= form.label "Pitcher Role" %>
+      <%= form.select :pitcher_role, PITCHER_ROLES.collect { |p| [p.capitalize] }, required: true %>
+    </div>
+
+    <div class="form-group form-dropdown">
+      <%= form.label "grade" %>
+      <%= form.select :grade, options_for_select(STANDARD_GRADES, 50)%>
+    </div>
+  </div>
+
+  <div class="row form-row">
+    <div class="form-group">
+      <%= form.label "summary", class: "mb-sm-3" %>
+      <%= form.text_area :summary, class: "form-control", placeholder: "Written report..." %>
+    </div>
+  </div>
+
+  <%= form.label "Pitch Grades", class: "mt-sm-5 mt-4 mt-md-0" %>
+  <div class="row form-row pitch-flex-container mt-sm-3">
+    <div class="card grouped-container" data-container="fastball" >
+      <div class="card-body">
+        <div class="pitch-flex-container">
+          <div class="pitch-type">Fastball</div>
+          <div class="pitch-min-velo">
+            <div class="form-group">
+              <%= form.text_field :fastball_min_velo, placeholder: "Min velo", class: "grouped-inputs", "data-key" => "fastball" %>
+            </div>
+          </div>
+          <div class="pitch-max-velo">
+            <div class="form-group">
+              <%= form.text_field :fastball_max_velo, placeholder: "Max velo", class: "grouped-inputs", "data-key" => "fastball" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card grouped-container" data-container="sinker">
+      <div class="card-body">
+        <div class="pitch-flex-container">
+          <div class="pitch-type">Sinker</div>
+          <div class="pitch-min-velo">
+            <div class="form-group">
+              <%= form.text_field :sinker_min_velo, placeholder: "Min velo", class: "grouped-inputs", "data-key" => "sinker" %>
+            </div>
+          </div>
+          <div class="pitch-max-velo">
+            <div class="form-group">
+              <%= form.text_field :sinker_max_velo, placeholder: "Max velo", class: "grouped-inputs", "data-key" => "sinker" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card grouped-container" data-container="slider">
+      <div class="card-body">
+        <div class="pitch-flex-container">
+          <div class="pitch-type">Slider</div>
+          <div class="pitch-min-velo">
+            <div class="form-group">
+              <%= form.text_field :slider_min_velo, placeholder: "Min velo", class: "grouped-inputs", "data-key" => "slider" %>
+            </div>
+          </div>
+          <div class="pitch-max-velo">
+            <div class="form-group">
+              <%= form.text_field :slider_max_velo, placeholder: "Max velo", class: "grouped-inputs", "data-key" => "slider" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row form-row pitch-flex-container">
+    <div class="card grouped-container" data-container="curveball">
+      <div class="card-body">
+        <div class="pitch-flex-container">
+          <div class="pitch-type">Curveball</div>
+          <div class="pitch-min-velo">
+            <div class="form-group">
+              <%= form.text_field :curveball_min_velo, placeholder: "Min velo", class: "grouped-inputs", "data-key" => "curveball" %>
+            </div>
+          </div>
+          <div class="pitch-max-velo">
+            <div class="form-group">
+              <%= form.text_field :curveball_max_velo, placeholder: "Max velo", class: "grouped-inputs", "data-key" => "curveball" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card grouped-container" data-container="changeup">
+      <div class="card-body">
+        <div class="pitch-flex-container">
+          <div class="pitch-type">Changeup</div>
+          <div class="pitch-min-velo">
+            <div class="form-group">
+              <%= form.text_field :changeup_min_velo, placeholder: "Min velo", class: "grouped-inputs", "data-key" => "changeup" %>
+            </div>
+          </div>
+          <div class="pitch-max-velo">
+            <div class="form-group">
+              <%= form.text_field :changeup_max_velo, placeholder: "Max velo", class: "grouped-inputs", "data-key" => "changeup" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card grouped-container" data-container="other">
+      <div class="card-body">
+        <div class="pitch-flex-container">
+          <div class="pitch-type-name">
+            <div class="form-group">
+              <%= form.text_field :other_name, placeholder: "Other", class: "grouped-inputs", "data-key" => "other" %>
+            </div>
+          </div>
+          <div class="pitch-min-velo">
+            <div class="form-group">
+              <%= form.text_field :other_min_velo, placeholder: "Min velo", class: "grouped-inputs", "data-key" => "other" %>
+            </div>
+          </div>
+          <div class="pitch-max-velo">
+            <div class="form-group">
+              <%= form.text_field :other_max_velo, placeholder: "Max velo", class: "grouped-inputs", "data-key" => "other" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= form.hidden_field :report_type, value: scouting_report_type %>
+  <%= form.hidden_field :position, value: 'P' %>
+
+  <div class="actions mt-sm-5 mt-sm-5 mt-4 mt-md-0 mt-lg-5 mb-sm-5 mb-sm-5 mb-4 mb-md-0 mb-lg-5">
+    <%= form.submit "Save Report", :class => 'btn-sm btn-primary' %>
+  </div>
+</div>

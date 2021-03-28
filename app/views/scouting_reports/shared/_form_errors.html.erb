@@ -1,0 +1,10 @@
+<% if scouting_report.errors.any? %>
+  <div id="error_explanation mb-sm-5">
+    <h5><%= pluralize(scouting_report.errors.count, "error") %> prohibited this report from being saved:</h5>
+    <ul>
+      <% scouting_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
