@@ -7,6 +7,7 @@ class ScoutingReportsController < ApplicationController
 
   def index
     initial_query = ScoutingReport.joins(:player)
+                                  .includes(:user)
                                   .order(sort_column + " " + sort_direction)
                                   .paginate(page: params[:page], per_page: STANDARD_PAGINATION_AMOUNT)
     if filter_pitch_reports?
