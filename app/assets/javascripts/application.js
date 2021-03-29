@@ -22,22 +22,22 @@ $(document).ready(function () {
 });
 
 function initInputGroups() {
-  const $groupedBtns = $("input.grouped-inputs");
+  var $groupedBtns = $("input.grouped-inputs");
 
-  $.each($groupedBtns, (index, button) => {
-    const $this = $(button);
-    const $key = $this[0].dataset.key;
-    const $container = $("div.card[data-container='" + $key + "']");
+  $.each($groupedBtns, function (index, button) {
+    var $this = $(button);
+    var $key = $this[0].dataset.key;
+    var $container = $("div.card[data-container='" + $key + "']");
 
     if ($this.val()) {
       $container.addClass("toggle-group-selected");
     }
 
-    $this.on("focus", () => {
+    $this.on("focus", function () {
       $container.addClass("toggle-group-selected");
     });
 
-    $this.focusout(() => {
+    $this.focusout(function () {
       if (!$this.val()) {
         $container.removeClass("toggle-group-selected");
       }
@@ -46,10 +46,10 @@ function initInputGroups() {
 }
 
 function clickableRows() {
-  const $rows = $("table.clickable-table tr[data-href]");
-  $.each($rows, (index, object) => {
-    $(object).on("click", () => {
-      const $this = $(object);
+  var $rows = $("table.clickable-table tr[data-href]");
+  $.each($rows, function (index, object) {
+    $(object).on("click", function () {
+      var $this = $(object);
       window.location.href = $this[0].dataset.href;
     });
   });
