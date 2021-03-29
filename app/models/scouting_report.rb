@@ -20,8 +20,11 @@ class ScoutingReport < ApplicationRecord
     r.validates :changeup_max_velo, presence: true, numericality: { only_integer: false }, if: :changeup_min_velo?
     r.validates :changeup_min_velo, presence: true, numericality: { only_integer: false }, if: :changeup_max_velo?
     r.validates :other_min_velo, presence: true, numericality: { only_integer: false }, if: :other_max_velo?
+    r.validates :other_min_velo, presence: true, numericality: { only_integer: false }, if: :other_name?
     r.validates :other_max_velo, presence: true, numericality: { only_integer: false }, if: :other_min_velo?
-    r.validates :other_name, presence: true, if: :other_min_velo? or :other_max_velo?
+    r.validates :other_max_velo, presence: true, numericality: { only_integer: false }, if: :other_name?
+    r.validates :other_name, presence: true, if: :other_min_velo?
+    r.validates :other_name, presence: true, if: :other_max_velo?
   end
 
   store_accessor :details, [:pitcher_role, :summary, :position, :time_to_first, :fastball_min_velo, :fastball_max_velo, :sinker_min_velo, :sinker_max_velo, :slider_min_velo, :slider_max_velo, :curveball_min_velo, :curveball_max_velo, :changeup_min_velo, :changeup_max_velo, :other_name, :other_min_velo, :other_max_velo]
@@ -83,5 +86,9 @@ class ScoutingReport < ApplicationRecord
 
   def other_max_velo?
     other_max_velo.present?
+  end
+
+  def other_name?
+    other_name.present?
   end
 end
