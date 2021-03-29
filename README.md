@@ -1,24 +1,11 @@
-# README
+# Scout
+## A baseball scouting report Ruby on Rails project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To use on your own machine:
+* Clone the repository locally: `git clone https://github.com/teddylopez/scout.git`
+* `cd` into the project folder and run the following commands:
+    * `rake db:create`
+    * `rake db:migrate`
+    * `rake db:seed`
+    * Start the rails server by running `rails s` and visiting `http://localhost:3000/`
+    * When prompted to log in, use the account: *scout@raysbaseball.com*, password: *password*
