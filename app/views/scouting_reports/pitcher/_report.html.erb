@@ -4,6 +4,8 @@
   <div class="col-md-4 col-sm-12">
     <h6><b>Role</b>: <%= @scouting_report.pitcher_role.capitalize %></h6>
     <br>
+    <h6><b>Grade</b>: <%= @scouting_report.grade %></h6>
+    <br>
     <u><b>Additional Info</b></u>
     <%= render "scouting_reports/shared/player_attributes", info: @scouting_report.player.info %>
     <%= render "scouting_reports/pitcher/pitch_info_table", scouting_report: @scouting_report %>
